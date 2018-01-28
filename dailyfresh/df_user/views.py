@@ -43,11 +43,12 @@ def register_exist(request):
 
 
 #登录
-
 def login(request):
-    uname = request.COOKIES.get('uname','')
-    print 'login页面的uname是：',uname
-    context = {'title': '登录', 'username': uname}
+    uname = request.COOKIES.get('uname', '')
+    context = {
+        'title': '登录',
+        'username': uname,
+    }
     return render(request, 'df_user/login.html', context)
 
 
@@ -86,12 +87,16 @@ def info(request):
         'users': request.session['user_name'],
         'email': email,
         'title': '个人中心',
+        'page_name': 1,
     }
     return render(request, 'df_user/user_center_info.html', context)
 
 #全部订单
 def order(request):
-    context = {'title': '个人中心'}
+    context = {
+        'title': '个人中心',
+        'page_name': 1,
+    }
     return render(request, 'df_user/user_center_order.html',context)
 
 #收货地址
@@ -106,5 +111,6 @@ def site(request):
     context = {
         'title': '个人中心',
         'user': user,
+        'page_name': 1,
     }
     return render(request, 'df_user/user_center_site.html', context)

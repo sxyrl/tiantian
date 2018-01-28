@@ -1,3 +1,4 @@
+#coding:utf8
 """
 Django settings for dailyfresh project.
 
@@ -38,6 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'df_user',
+    'df_goods',
+    #文本编辑器
+    'tinymce',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,12 +84,12 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE':'django.db.backends.mysql',
-        'NAME':'tiantian',
-        'USER':'root',
-        'PASSWORD':'root',
-        'PORT':'3306',
-        'HOST':'localhost'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tiantian',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'PORT': '3306',
+        'HOST': 'localhost'
     }
 }
 
@@ -113,5 +117,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR, 'static')
 ]
+
+#上传图片路径配置--开发阶段
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+#部署时候的目录
+# MEDIA_ROOT = '/var/www/dailyfresh/static'
+
+#富文本编辑器
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'width': 600,
+    'height': 400,
+}
